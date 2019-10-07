@@ -23,6 +23,8 @@ class Bloop < Formula
       fish_completion.install "opt/bloop/fish/bloop.fish"
 
       bin.install "opt/bloop/bloop"
+      bin.install "opt/bloop/blp-coursier"
+      bin.install "opt/bloop/blp-server"
       
       # We need to create these files manually here, because otherwise launchd
       # will create them with owner set to `root` (see the plist file below).
