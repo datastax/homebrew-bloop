@@ -12,10 +12,6 @@ class Bloop < Formula
   depends_on "sbt"
 
   def install
-      zsh_completion.install "bin/zsh/_bloop"
-      bash_completion.install "bin/bash/bloop"
-      fish_completion.install "bin/fish/bloop.fish"
-
       # We need to create these files manually here, because otherwise launchd
       # will create them with owner set to `root` (see the plist file below).
       FileUtils.mkdir_p("log/bloop/")
