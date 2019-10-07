@@ -2,14 +2,13 @@ class Bloop < Formula
   desc "Bloop is a build server to compile, test and run Scala fast"
   homepage "https://github.com/scalacenter/bloop"
   version "1.3.3-dse-1"
-  url "https://github.com/jacek-lewandowski/bloop/archive/v1.3.3-dse-1.tar.gz"
-  sha256 "4008dd8868de8faf186c26a613bbd34648ab78b4d1737d73855c864043bf614b"
+  url "https://github.com/pkolaczk/bloop/releases/download/v#{version}/bloop-#{version}.deb"
+  sha256 "28e03a6d76eec6e47a232086aa8d59ed7582778ea7d483d045a1b8d6fe5a3277"
   bottle :unneeded
 
   depends_on "bash-completion"
   depends_on "python3"
   depends_on :java => "1.8+"
-  depends_on "sbt"
 
   def install
       # We need to create these files manually here, because otherwise launchd
