@@ -12,10 +12,6 @@ class Bloop < Formula
   depends_on "sbt"
 
   def install
-      system "git", "submodule", "update", "--init"
-      system "sbt", "install"
-      system "chmod", "a+x", "./frontend/target/install.py"
-      system "./frontend/target/install.py"
       zsh_completion.install "bin/zsh/_bloop"
       bash_completion.install "bin/bash/bloop"
       fish_completion.install "bin/fish/bloop.fish"
