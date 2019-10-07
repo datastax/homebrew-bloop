@@ -3,7 +3,7 @@ class Bloop < Formula
   homepage "https://github.com/scalacenter/bloop"
   version "1.3.3-dse-1"
   url "https://github.com/jacek-lewandowski/bloop/releases/download/v1.3.3-dse-1/install.py"
-  sha256 "a6ba8923394b7529dd7901590892efcd438c6e442a45064bfa749265bc827dbf"
+  sha256 "fb64c0dc5177973a547085ff7848e1e903792996ae294695fcbd65d3b07971b8"
   bottle :unneeded
 
   depends_on "bash-completion"
@@ -12,7 +12,7 @@ class Bloop < Formula
 
   def install
       mkdir "bin"
-      system "python3", "install.py", "--dest", "bin", "--version", version
+      system "python3", "install.py", "--dest", "bin", "--version", version, "--nailgun", "d7ed5db", "--coursier", "1.1.0-M14-4"
       zsh_completion.install "bin/zsh/_bloop"
       bash_completion.install "bin/bash/bloop"
       fish_completion.install "bin/fish/bloop.fish"
