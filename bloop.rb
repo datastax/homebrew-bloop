@@ -2,17 +2,21 @@ class Bloop < Formula
   desc "Bloop is a build server to compile, test and run Scala fast"
   homepage "https://github.com/scalacenter/bloop"
   version "1.3.3-dse-1"
-  url "https://github.com/jacek-lewandowski/bloop/releases/download/v1.3.3-dse-1/install.py"
-  sha256 "fb64c0dc5177973a547085ff7848e1e903792996ae294695fcbd65d3b07971b8"
+  url "https://github.com/jacek-lewandowski/bloop/archive/v1.3.3-dse-1.tar.gz"
+  sha256 "4008dd8868de8faf186c26a613bbd34648ab78b4d1737d73855c864043bf614b"
   bottle :unneeded
 
   depends_on "bash-completion"
   depends_on "python3"
   depends_on :java => "1.8+"
+  depends_on "sbt"
 
   def install
-      mkdir "bin"
-      system "python3", "install.py", "--dest", "bin", "--version", version, "--nailgun", "d7ed5db", "--coursier", "1.1.0-M14-4"
+      system "tar", "-xf", "bloop-#{version}.tar.gz", "--strip", "1"
+      system "git", "submodule", "update", "--init"
+      system "sbt", "install"
+      system "chmod", "a+x", "./frontend/target/install.py"
+      system "./frontend/target/install.py"
       zsh_completion.install "bin/zsh/_bloop"
       bash_completion.install "bin/bash/bloop"
       fish_completion.install "bin/fish/bloop.fish"
