@@ -11,13 +11,19 @@ class Bloop < Formula
   depends_on :java => "1.8+"
 
   def install
+      system "ar", "-x", "bloop-#{version}.deb"
+      system "tar", "-xf", "data.tar.xz"
+      system "tar", "-xf", "control.tar.xz"
+      rm "bloop-#{version}.deb"
+      rm "data.tar.xz"
+      rm "control.tar.xz"
       # We need to create these files manually here, because otherwise launchd
       # will create them with owner set to `root` (see the plist file below).
       FileUtils.mkdir_p("log/bloop/")
       FileUtils.touch("log/bloop/bloop.out.log")
       FileUtils.touch("log/bloop/bloop.err.log")
 
-      prefix.install "bin"
+      prefix.install "opt"
       prefix.install "log"
   end
 
@@ -30,7 +36,7 @@ class Bloop < Formula
     <string>#{plist_name}</string>
     <key>ProgramArguments</key>
     <array>
-        <string>#{bin}/bloop</string>
+        <string>#{prefix}/opt/bloop/bloop</string>
         <string>server</string>
     </array>
     <key>KeepAlive</key>
