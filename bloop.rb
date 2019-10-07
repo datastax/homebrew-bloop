@@ -12,9 +12,6 @@ class Bloop < Formula
   depends_on "sbt"
 
   def install
-      system "pwd"
-      system "ls -l"
-      system "tar", "-xf", "bloop-#{version}.tar.gz", "--strip", "1"
       system "git", "submodule", "update", "--init"
       system "sbt", "install"
       system "chmod", "a+x", "./frontend/target/install.py"
