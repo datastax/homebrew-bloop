@@ -17,6 +17,13 @@ class Bloop < Formula
       rm "bloop-#{version}.deb"
       rm "data.tar.xz"
       rm "control.tar.xz"
+
+      zsh_completion.install "opt/bloop/zsh/_bloop"
+      bash_completion.install "opt/bloop/bash/bloop"
+      fish_completion.install "opt/bloop/fish/bloop.fish"
+
+      bin.install "opt/bloop/bloop"
+      
       # We need to create these files manually here, because otherwise launchd
       # will create them with owner set to `root` (see the plist file below).
       FileUtils.mkdir_p("log/bloop/")
