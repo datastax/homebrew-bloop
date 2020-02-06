@@ -3,7 +3,7 @@ class Bloop < Formula
   homepage "https://github.com/scalacenter/bloop"
   version "1.3.4-dse-4"
   url "https://github.com/datastax/bloop/releases/download/v#{version}/bloop-#{version}.deb"
-  sha256 "43927b5df355bbe61d45a2a6fc71d924e1eb5d973a32876b14674a0bb054fca7"
+  sha256 "db3cc937d5b4f46e45ad5d83ff5e92f9a8220a18fa3981c7843e2b31983a4226"
   bottle :unneeded
 
   depends_on "bash-completion"
